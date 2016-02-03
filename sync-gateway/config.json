@@ -1,0 +1,32 @@
+{
+  "interface": ":4984",
+  "profileInterface": "80",
+  "adminInterface": ":4985",
+  "MaxFileDescriptors": 25000,
+  "compressResponses": false,
+  "log": [
+    "CRUD",
+    "CRUD+",
+    "HTTP",
+    "HTTP+",
+    "Access",
+    "Cache",
+    "Shadow",
+    "Shadow+",
+    "Changes",
+    "Changes+"
+  ],
+  "databases": {
+    "default": {
+      "bucket": "default",
+      "server": "http://couchbase-server:8091",
+      "cache": {
+        "channel_cache_max_length": 5000,
+        "channel_cache_min_length": 5000,
+        "channel_cache_expiry": 90
+      },
+      "sync": `function(doc) {channel(doc.channel);}`,
+      "users": { "GUEST": { "disabled": false, "admin_channels": ["*"] } }
+    }
+  }
+}

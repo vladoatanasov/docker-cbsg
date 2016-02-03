@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+httpstatus="000"
+
+printf "Waiting for server to start\n"
+while [ $httpstatus -ne "200" ]; do
+  httpstatus=$(curl -s -o /dev/null -I -w "%{http_code}" http://couchbase-server:8091/pools/default/buckets/default)
+done
+
+cd /usr/local/bin && ./sync_gateway /tmp/config.json &
+
+while true; do sleep 1000; done

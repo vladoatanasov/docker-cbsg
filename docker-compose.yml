@@ -1,0 +1,19 @@
+couchbase-server:
+  build: couchbase-server/
+  ports:
+    - 8091:8091
+    - 8092:8092
+    - 8093:8093
+    - 11210:11210
+  environment:
+    BUCKET: default
+    CB_USER: Administrator
+    CB_PASS: admin1234
+
+sync-gateway:
+  build: sync-gateway/
+  ports:
+    - 4984:4984
+    - 4985:4985
+  links:
+    - couchbase-server:couchbase-server
