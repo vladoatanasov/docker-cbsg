@@ -9,6 +9,6 @@ done
 
 sleep 5
 
-cd /usr/local/bin && ./sync_gateway /tmp/config.json &
+sync_gateway /home/sync_gateway/sync_gateway.json
 
 while true; do sleep 1000; done
